@@ -1,14 +1,9 @@
-
-<<<<<<< HEAD
 # Student Performance Prediction
-=======
-# Student Performance Prediction 
->>>>>>> 256d806252efebb7f4d48ceb1e9cde7e12d3f95d
+
 ## End-to-End ML Project
 
 ## Overview
 
-<<<<<<< HEAD
 This project is an end-to-end machine learning web application that predicts a
 student's final grade. It covers data ingestion, preprocessing, model training,
 and serving predictions through a Flask web interface.
@@ -37,36 +32,22 @@ values.
 ```
 data.csv
    |
-Data Ingestion        -> train/test split, saved to artifacts/
+Data Ingestion         -> train/test split, saved to artifacts/
    |
-Data Transformation    -> impute + scale numeric, impute + one-hot encode categorical
+Data Transformation     -> impute + scale numeric, impute + one-hot encode categorical
    |
-Model Training          -> trains and compares several regressors, saves the best one
+Model Training           -> trains and compares several regressors, saves the best one
    |
 artifacts/model.pkl, artifacts/preprocessor.pkl
    |
-Prediction Pipeline    -> loads the saved model/preprocessor, transforms new input
+Prediction Pipeline     -> loads the saved model/preprocessor, transforms new input
    |
-Flask Application      -> web form collects input, shows the predicted G3
+Flask Application       -> web form collects input, shows the predicted G3
 ```
 
 Model training compares Linear Regression, Ridge, K-Neighbors, Decision Tree,
 Random Forest, Gradient Boosting, XGBoost, CatBoost, and AdaBoost regressors on
 R2 score, and saves the best-performing model.
-=======
-This project is an end-to-end machine learning web application developed to predict student exam scores. It integrates data engineering, model training, and deployment using Flask to serve predictions via a web interface.
-
----
-
-## Features
-
-- Predict student scores based on demographic and academic inputs.
-- End-to-end ML pipeline including:
-  - Data ingestion
-  - Data transformation
-  - Model training and evaluation
-- Web interface using Flask for real-time input and prediction.
->>>>>>> 256d806252efebb7f4d48ceb1e9cde7e12d3f95d
 
 ---
 
@@ -75,7 +56,6 @@ This project is an end-to-end machine learning web application developed to pred
 ```
 .
 ├── application.py               # Flask web application
-<<<<<<< HEAD
 ├── main.py                      # ML pipeline orchestration (training)
 ├── setup.py                     # Python package configuration
 ├── requirements.txt             # Dependencies
@@ -92,21 +72,6 @@ This project is an end-to-end machine learning web application developed to pred
         ├── exception.py         # Custom exception class
         ├── logger.py            # Logging utility
         └── utils.py             # save_object / load_object / evaluate_models
-=======
-├── first.py                     # Sample script (demonstration)
-├── main.py                      # ML pipeline orchestration
-├── setup.py                     # Python package configuration
-├── requirements.txt             # Dependencies
-├── templates/
-│   ├── index.html               # Landing page
-│   └── home.html                # Form and result page
-└── src/
-    └── mlproject/
-        ├── components/          # Data ingestion, transformation, model training
-        ├── pipelines/           # Prediction pipeline
-        ├── exception.py         # Custom exception class
-        ├── logger.py            # Logging utility
->>>>>>> 256d806252efebb7f4d48ceb1e9cde7e12d3f95d
 ```
 
 ---
@@ -115,7 +80,6 @@ This project is an end-to-end machine learning web application developed to pred
 
 - Python
 - Flask
-<<<<<<< HEAD
 - Scikit-learn, XGBoost, CatBoost
 - Pandas, NumPy
 - HTML/CSS
@@ -154,21 +118,3 @@ final grade (G3).
 
 **Kamalika Kommineni**
 Email: kamalikak99@gmail.com
-
----
-=======
-- Scikit-learn
-- Pandas, NumPy
-- HTML/CSS 
-- Logging and Exception Handling
-
---- 
-
-## Author
-
-**Kamalika Kommineni**  
-Email: kamalikak99@gmail.com
-
----
-
->>>>>>> 256d806252efebb7f4d48ceb1e9cde7e12d3f95d
