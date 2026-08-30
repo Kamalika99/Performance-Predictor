@@ -1,0 +1,23 @@
+numpy
+pandas
+mysql-connector-python
+pymysql
+scikit-learn
+<<<<<<< HEAD
+python-dotenv
+=======
+dotenv
+>>>>>>> 256d806252efebb7f4d48ceb1e9cde7e12d3f95d
+sqlalchemy
+catboost
+xgboost
+Flask
+dill
+mlflow==2.20
+<<<<<<< HEAD
+gunicorn
+pytest
+=======
+dill
+
+>>>>>>> 256d806252efebb7f4d48ceb1e9cde7e12d3f95d

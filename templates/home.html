@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Student Grade</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; }
+        h1 { margin-bottom: 5px; }
+        fieldset { margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; }
+        legend { font-weight: bold; padding: 0 6px; }
+        .field { margin-bottom: 12px; }
+        label { display: block; font-size: 0.9em; margin-bottom: 4px; }
+        select, input[type=number] {
+            width: 100%; padding: 6px; box-sizing: border-box;
+            border: 1px solid #ccc; border-radius: 4px;
+        }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+        button {
+            padding: 10px 24px; background: #2c7be5; color: #fff; border: none;
+            border-radius: 4px; font-size: 1em; cursor: pointer;
+        }
+        button:hover { background: #1a5fc4; }
+        .result {
+            margin-top: 24px; padding: 14px 18px; border-radius: 6px;
+            background: #eef6ff; border: 1px solid #bcdcff;
+        }
+        a { color: #2c7be5; }
+    </style>
+</head>
+<body>
+    <h1>Predict Final Grade (G3)</h1>
+    <p><a href="/">&larr; Back home</a></p>
+
+    <form action="/predictdata" method="post">
+        <fieldset>
+            <legend>School &amp; demographics</legend>
+            <div class="grid">
+                <div class="field">
+                    <label for="school">School</label>
+                    <select name="school" id="school" required>
+                        <option value="GP">Gabriel Pereira (GP)</option>
+                        <option value="MS">Mousinho da Silveira (MS)</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="sex">Sex</label>
+                    <select name="sex" id="sex" required>
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="age">Age (15-22)</label>
+                    <input type="number" name="age" id="age" min="15" max="22" required>
+                </div>
+                <div class="field">
+                    <label for="address">Home address</label>
+                    <select name="address" id="address" required>
+                        <option value="U">Urban</option>
+                        <option value="R">Rural</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="famsize">Family size</label>
+                    <select name="famsize" id="famsize" required>
+                        <option value="LE3">3 or fewer</option>
+                        <option value="GT3">Greater than 3</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="Pstatus">Parent cohabitation status</label>
+                    <select name="Pstatus" id="Pstatus" required>
+                        <option value="T">Living together</option>
+                        <option value="A">Apart</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Family background</legend>
+            <div class="grid">
+                <div class="field">
+                    <label for="Medu">Mother's education (0-4)</label>
+                    <input type="number" name="Medu" id="Medu" min="0" max="4" required>
+                </div>
+                <div class="field">
+                    <label for="Fedu">Father's education (0-4)</label>
+                    <input type="number" name="Fedu" id="Fedu" min="0" max="4" required>
+                </div>
+                <div class="field">
+                    <label for="Mjob">Mother's job</label>
+                    <select name="Mjob" id="Mjob" required>
+                        <option value="at_home">At home</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                        <option value="services">Services</option>
+                        <option value="teacher">Teacher</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="Fjob">Father's job</label>
+                    <select name="Fjob" id="Fjob" required>
+                        <option value="at_home">At home</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                        <option value="services">Services</option>
+                        <option value="teacher">Teacher</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="guardian">Guardian</label>
+                    <select name="guardian" id="guardian" required>
+                        <option value="mother">Mother</option>
+                        <option value="father">Father</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="reason">Reason for choosing school</label>
+                    <select name="reason" id="reason" required>
+                        <option value="course">Course preference</option>
+                        <option value="home">Close to home</option>
+                        <option value="reputation">School reputation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>School life</legend>
+            <div class="grid">
+                <div class="field">
+                    <label for="traveltime">Home-to-school travel time (1-4)</label>
+                    <input type="number" name="traveltime" id="traveltime" min="1" max="4" required>
+                </div>
+                <div class="field">
+                    <label for="studytime">Weekly study time (1-4)</label>
+                    <input type="number" name="studytime" id="studytime" min="1" max="4" required>
+                </div>
+                <div class="field">
+                    <label for="failures">Past class failures (0-3)</label>
+                    <input type="number" name="failures" id="failures" min="0" max="3" required>
+                </div>
+                <div class="field">
+                    <label for="absences">School absences (0-32)</label>
+                    <input type="number" name="absences" id="absences" min="0" max="32" required>
+                </div>
+                <div class="field">
+                    <label for="schoolsup">Extra educational support</label>
+                    <select name="schoolsup" id="schoolsup" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="famsup">Family educational support</label>
+                    <select name="famsup" id="famsup" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="paid">Extra paid classes</label>
+                    <select name="paid" id="paid" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="activities">Extra-curricular activities</label>
+                    <select name="activities" id="activities" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="nursery">Attended nursery school</label>
+                    <select name="nursery" id="nursery" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="higher">Wants higher education</label>
+                    <select name="higher" id="higher" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="internet">Internet access at home</label>
+                    <select name="internet" id="internet" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="romantic">In a romantic relationship</label>
+                    <select name="romantic" id="romantic" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Lifestyle</legend>
+            <div class="grid">
+                <div class="field">
+                    <label for="famrel">Quality of family relationships (1-5)</label>
+                    <input type="number" name="famrel" id="famrel" min="1" max="5" required>
+                </div>
+                <div class="field">
+                    <label for="freetime">Free time after school (1-5)</label>
+                    <input type="number" name="freetime" id="freetime" min="1" max="5" required>
+                </div>
+                <div class="field">
+                    <label for="goout">Going out with friends (1-5)</label>
+                    <input type="number" name="goout" id="goout" min="1" max="5" required>
+                </div>
+                <div class="field">
+                    <label for="Dalc">Workday alcohol consumption (1-5)</label>
+                    <input type="number" name="Dalc" id="Dalc" min="1" max="5" required>
+                </div>
+                <div class="field">
+                    <label for="Walc">Weekend alcohol consumption (1-5)</label>
+                    <input type="number" name="Walc" id="Walc" min="1" max="5" required>
+                </div>
+                <div class="field">
+                    <label for="health">Current health status (1-5)</label>
+                    <input type="number" name="health" id="health" min="1" max="5" required>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Prior grades</legend>
+            <div class="grid">
+                <div class="field">
+                    <label for="G1">First period grade, G1 (0-20)</label>
+                    <input type="number" name="G1" id="G1" min="0" max="20" required>
+                </div>
+                <div class="field">
+                    <label for="G2">Second period grade, G2 (0-20)</label>
+                    <input type="number" name="G2" id="G2" min="0" max="20" required>
+                </div>
+            </div>
+        </fieldset>
+
+        <button type="submit">Predict final grade</button>
+    </form>
+
+    {% if results is defined %}
+    <div class="result">
+        <strong>Result:</strong> {{ results }}
+    </div>
+    {% endif %}
+</body>
+</html>
